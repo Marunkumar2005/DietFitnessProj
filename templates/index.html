@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diet & Fitness Predictor</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+
+<body>
+  <!-- Background blobs -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="top">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Go to home">
+        <div class="logo"><i class="fa-solid fa-dumbbell"></i></div>
+        <div class="brand-text">
+          <div class="brand-title">Fitness Provider</div>
+          <div class="brand-sub">Diet & Fitness Predictor</div>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a class="pill" href="#home"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="pill" href="#about"><i class="fa-solid fa-circle-info"></i> About</a>
+        <a class="pill" href="#features"><i class="fa-solid fa-sparkles"></i> Features</a>
+        <a class="pill" href="#predict"><i class="fa-solid fa-pen-to-square"></i> Predict</a>
+        <a class="pill" href="#results"><i class="fa-solid fa-chart-line"></i> Results</a>
+
+        <button class="toggle" type="button" onclick="toggleTheme()">
+          <i class="fa-solid fa-moon"></i> <span class="toggle-text">Dark</span>
+        </button>
+
+        <a class="pill primary" href="#predict"><i class="fa-solid fa-bolt"></i> Start</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Home / Hero -->
+    <section class="hero" id="home">
+      <div class="hero-left">
+        <div class="kicker">
+          <span class="dot"></span>
+          AI Powered Health Assistant
+        </div>
+
+        <h1>Personalized Diet & Fitness Recommendations, instantly.</h1>
+        <p>
+          Enter your health details to predict your fitness level, score, and diet plan.
+          Get suggested foods to eat/avoid — plus a live BMI meter for quick insight.
+        </p>
+
+        <div class="chips">
+          <span class="chip"><i class="fa-solid fa-shield-heart"></i> Practical tips</span>
+          <span class="chip"><i class="fa-solid fa-wand-magic-sparkles"></i> Modern UI</span>
+          <span class="chip"><i class="fa-solid fa-mobile-screen-button"></i> Responsive</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="cta cta-primary" href="#predict">
+            <i class="fa-solid fa-arrow-right"></i> Start Prediction
+          </a>
+          <a class="cta cta-secondary" href="#features">
+            <i class="fa-solid fa-layer-group"></i> Explore Features
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <div class="stat-title">Fast Output</div>
+              <div class="stat-sub">Quick prediction UI</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-lock"></i></div>
+            <div>
+              <div class="stat-title">Privacy First</div>
+              <div class="stat-sub">No data stored here</div>
+            </div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <div>
+              <div class="stat-title">Clear Insights</div>
+              <div class="stat-sub">Badges + BMI meter</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right" aria-hidden="true">
+        <!-- Inline SVG "image" (no external image needed) -->
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <div class="hero-badge"><i class="fa-solid fa-heart-pulse"></i> Health Dashboard</div>
+            <div class="hero-mini">
+              <span class="mini-pill"><i class="fa-solid fa-fire"></i> Calories</span>
+              <span class="mini-pill"><i class="fa-solid fa-person-running"></i> Fitness</span>
+            </div>
+          </div>
+
+          <svg class="hero-illustration" viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#a855f7" stop-opacity="0.90"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#16a34a" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#0ea5e9" stop-opacity="0.90"/>
+              </linearGradient>
+            </defs>
+
+            <!-- background -->
+            <rect x="0" y="0" width="820" height="520" rx="28" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="150" cy="120" r="90" fill="url(#g1)" opacity="0.26"/>
+            <circle cx="650" cy="160" r="120" fill="url(#g2)" opacity="0.22"/>
+            <circle cx="430" cy="420" r="160" fill="url(#g1)" opacity="0.18"/>
+
+            <!-- cards -->
+            <rect x="80" y="90" width="320" height="160" rx="22" fill="rgba(255,255,255,0.55)"/>
+            <rect x="440" y="110" width="300" height="130" rx="22" fill="rgba(255,255,255,0.45)"/>
+            <rect x="140" y="290" width="600" height="150" rx="22" fill="rgba(255,255,255,0.42)"/>
+
+            <!-- bars -->
+            <rect x="110" y="140" width="260" height="14" rx="8" fill="rgba(15,23,42,0.12)"/>
+            <rect x="110" y="140" width="190" height="14" rx="8" fill="url(#g2)"/>
+
+            <rect x="110" y="175" width="220" height="14" rx="8" fill="rgba(15,23,42,0.12)"/>
+            <rect x="110" y="175" width="140" height="14" rx="8" fill="url(#g1)"/>
+
+            <rect x="470" y="155" width="240" height="14" rx="8" fill="rgba(15,23,42,0.12)"/>
+            <rect x="470" y="155" width="150" height="14" rx="8" fill="url(#g2)"/>
+
+            <!-- big chart -->
+            <path d="M180 400 C260 340, 330 430, 420 370 C510 310, 570 410, 690 330" fill="none" stroke="url(#g1)" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="180" cy="400" r="8" fill="#0ea5e9"/>
+            <circle cx="420" cy="370" r="8" fill="#a855f7"/>
+            <circle cx="690" cy="330" r="8" fill="#16a34a"/>
+
+            <!-- title texts -->
+            <text x="110" y="125" font-size="18" font-family="Segoe UI" fill="rgba(15,23,42,0.75)">Daily Progress</text>
+            <text x="470" y="140" font-size="18" font-family="Segoe UI" fill="rgba(15,23,42,0.75)">Fitness Score</text>
+            <text x="170" y="318" font-size="18" font-family="Segoe UI" fill="rgba(15,23,42,0.75)">Balanced Diet Plan Suggestions</text>
+          </svg>
+
+          <div class="hero-card-bottom">
+            <div class="hero-note">
+              <i class="fa-solid fa-circle-check"></i>
+              Enter details → Get diet + fitness insights
+            </div>
+            <div class="hero-note">
+              <i class="fa-solid fa-circle-check"></i>
+              Live BMI meter (if height & weight exist)
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="section-head">
+        <h2><i class="fa-solid fa-circle-info"></i> About this Project</h2>
+        <p>
+          This project predicts a user’s fitness profile using input health parameters and then generates
+          diet and fitness recommendations. It’s designed to be easy, fast, and visually clear.
+        </p>
+      </div>
+
+      <div class="cards-3">
+        <div class="info-card">
+          <div class="icn"><i class="fa-solid fa-brain"></i></div>
+          <h3>ML/AI driven prediction</h3>
+          <p>Uses your backend model output to show diet plan + fitness insights in a friendly UI.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="icn"><i class="fa-solid fa-hand-holding-heart"></i></div>
+          <h3>User-focused guidance</h3>
+          <p>Shows what to eat & avoid with clean badges and simple results layout.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="icn"><i class="fa-solid fa-gauge-high"></i></div>
+          <h3>Instant feedback</h3>
+          <p>Live BMI meter and category tags help you understand your current status quickly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <h2><i class="fa-solid fa-sparkles"></i> Unique UI Features</h2>
+        <p>Designed to look modern and unique — perfect for a project demo.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="f-icn"><i class="fa-solid fa-layer-group"></i></div>
+          <div>
+            <div class="f-title">Glassmorphism Layout</div>
+            <div class="f-sub">Clean cards with blur + soft gradients.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="f-icn"><i class="fa-solid fa-moon"></i></div>
+          <div>
+            <div class="f-title">Dark Mode Toggle</div>
+            <div class="f-sub">Saved in browser for better user experience.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="f-icn"><i class="fa-solid fa-tags"></i></div>
+          <div>
+            <div class="f-title">Smart Badges</div>
+            <div class="f-sub">Score/Fitness gets colored tags automatically.</div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="f-icn"><i class="fa-solid fa-weight-scale"></i></div>
+          <div>
+            <div class="f-title">BMI Meter</div>
+            <div class="f-sub">Live meter updates while you type.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Predictor + Results -->
+    <section class="section" id="predict">
+      <div class="section-head">
+        <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Predictor</h2>
+        <p>Fill your details and click Predict. Results will appear on the right panel.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Form -->
+        <div class="card">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-user-pen"></i> Enter Your Details</h3>
+            <span class="badge">Accurate • Fast • Simple</span>
+          </div>
+
+          <div class="card-body">
+            <form method="POST" onsubmit="setLoading(true)">
+              {% for field, label, type in fields %}
+              <div class="field">
+                <label for="{{ field }}"><i class="fa-regular fa-circle-check"></i> {{ label }}</label>
+                <input id="{{ field }}" name="{{ field }}" type="{{ type }}" step="any" required placeholder="Enter {{ label }}">
+              </div>
+              {% endfor %}
+
+              <div class="actions">
+                <button type="submit" class="btn btn-primary" id="predictBtn">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Predict Now
+                </button>
+
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">
+                  <i class="fa-solid fa-eraser"></i> Clear
+                </button>
+              </div>
+            </form>
+
+            <div class="note">
+              <i class="fa-solid fa-circle-info"></i>
+              BMI meter uses <b>Height</b> and <b>Weight</b> fields (if present).
+            </div>
+          </div>
+        </div>
+
+        <!-- Results -->
+        <div class="card result-card" id="results">
+          <div class="card-header">
+            <h3><i class="fa-solid fa-chart-line"></i> Your Results</h3>
+            <span class="badge badge-green">Summary Panel</span>
+          </div>
+
+          <div class="card-body">
+            <div class="result-box">
+              {% if result %}
+                {% if result.error %}
+                  <div class="error">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    Prediction Error: {{ result.error }}
+                  </div>
+                {% else %}
+
+                  <div class="tags">
+                    <span class="tag" id="dietTag"><i class="fa-solid fa-utensils"></i> Diet: <b>{{ result.diet }}</b></span>
+                    <span class="tag" id="fitnessTag"><i class="fa-solid fa-heart-pulse"></i> Fitness: <b>{{ result.fitness }}</b></span>
+                    <span class="tag" id="scoreTag"><i class="fa-solid fa-star"></i> Score: <b>{{ result.score }}</b></span>
+                  </div>
+
+                  <div class="result-grid">
+                    <div class="row"><strong><i class="fa-solid fa-bowl-food"></i> Foods to Eat</strong><span>{{ result.food_eat }}</span></div>
+                    <div class="row wide"><strong><i class="fa-solid fa-ban"></i> Foods to Avoid</strong><span>{{ result.food_avoid }}</span></div>
+                  </div>
+
+                  <!-- BMI Meter -->
+                  <div class="meter">
+                    <div class="meter-top">
+                      <div class="title"><i class="fa-solid fa-weight-scale"></i> BMI Meter</div>
+                      <span class="tag" id="bmiTag">BMI: {{ bmi }}</span>
+                    </div>
+
+                    <div class="bar" aria-label="BMI meter bar">
+                      <div class="fill" id="bmiFill"></div>
+                      <div class="tick t1" title="18.5"></div>
+                      <div class="tick t2" title="25"></div>
+                      <div class="tick t3" title="30"></div>
+                    </div>
+
+                    <div class="meter-note">
+                      <span>Underweight (&lt;18.5)</span>
+                      <span>Normal (18.5–24.9)</span>
+                      <span>Overweight (25–29.9)</span>
+                      <span>Obese (≥30)</span>
+                    </div>
+                  </div>
+
+                {% endif %}
+              {% else %}
+                <div class="empty">
+                  <i class="fa-solid fa-magnifying-glass-chart"></i>
+                  <p>Prediction results will appear here after you submit the form.</p>
+                </div>
+              {% endif %}
+            </div>
+
+            <div class="footer-note">
+              <i class="fa-solid fa-shield-heart"></i>
+              This tool provides suggestions and is not a medical diagnosis.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="foot-left">
+          <div class="foot-title"><i class="fa-solid fa-dumbbell"></i> Fitness Provider</div>
+          <div class="foot-sub">Diet & Fitness Predictor • Project UI</div>
+        </div>
+        <div class="foot-right">
+          <a href="#top" class="foot-link"><i class="fa-solid fa-arrow-up"></i> Back to top</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
