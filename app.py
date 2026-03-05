@@ -1,16 +1,16 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import numpy as np
-import joblib
+
 
 app = Flask(__name__)
 
 # Load your trained pipeline
 import os
-
+import joblib
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "random_forest_pipeline.pkl")  # or models/random_forest_pipeline.pkl
+MODEL_PATH = os.path.join(BASE_DIR, "random_forest_pipeline.pkl")
 pipeline = joblib.load(MODEL_PATH)
 # Diet mappings
 DIET_TO_FITNESS = {
